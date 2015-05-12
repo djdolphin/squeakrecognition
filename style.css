@@ -1,0 +1,116 @@
+body {
+  font-family: 'Open Sans';
+  font-size: 1em;
+  margin: 0;
+  overflow-x: hidden;
+}
+
+#bottom {
+  width: 100%;
+  height: 48px;
+  position: fixed;
+  bottom: 0;
+  background-color: #888;
+}
+
+#buttons {
+  position: absolute;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+#talkButton, #infoButton {
+  display: inline-block;
+  position: absolute;
+  top: 4px;
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: background-color 0.5s;
+  -webkit-transition: background-color 0.5s;
+}
+
+#talkButton {
+  right: 0;
+  margin-right: 4px;
+  background-image: url('microphone.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70%;
+}
+
+#infoButton {
+  left: 0;
+  margin-left: 4px;
+  text-align: center;
+  font-size: 28px;
+}
+
+#talkButton.waiting, #infoButton {
+  background-color: #777;
+}
+
+#talkButton.waiting:hover, #infoButton:hover {
+  background-color: #666;
+}
+
+#talkButton.inProgress {
+  background-color: red;
+}
+
+#talkButton.speaking {
+  background-color: green;
+  cursor: not-allowed;
+}
+
+#bubbles {
+  position: absolute;
+  padding: 10px;
+  margin: 0 0 48px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.bubble {
+  border-radius: 10px;
+  width: calc(100% - 50px);
+  width: -webkit-calc(100% - 50px);
+  min-height: 1em;
+  padding: 5px;
+  position: relative;
+  margin: 5px 10px;
+}
+
+.bubble::after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  border-style: solid;
+  top: 50%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+.bubble.piggy {
+  background-color: lightsalmon;
+}
+
+.bubble.piggy::after {
+  border-color: transparent lightsalmon;
+  border-width: 5px 10px 5px 0;
+  left: -10px;
+}
+
+.bubble.info {
+  background-color: aquamarine;
+}
+
+.bubble.info::after {
+  border-color: transparent aquamarine;
+  border-width: 5px 0 5px 10px;
+  right: -10px;
+}
